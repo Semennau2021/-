@@ -1,0 +1,21 @@
+// Лабораторная №1 Задание 2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace lab1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double pi = 3.14159;
+            Console.WriteLine("Input x =\r");
+            double x = 
+            Convert.ToDouble(Console.ReadLine());
+            double y = Math.Exp((4*x) / 5) + (2*Math.Sin(7*Math.Log(x + (5/3)))) - pi;
+            Console.WriteLine(" x = {0} \t y = {1}", x, y);
+            Console.ReadLine();
+        }
+    }
+}
