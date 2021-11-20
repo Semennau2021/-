@@ -1,0 +1,10 @@
+int a,b,s,k;
+Console.WriteLine("Ведіт а - леву границю відрізку");
+a = int.Parse(Console.ReadLine());
+Console.WriteLine("Ведіть b - праву грануцю відрізку");
+b = int.Parse(Console.ReadLine());
+s = 0;
+k = 0;
+do {s += a; k++; a++;}
+while (a <= b);
+Console.WriteLine("\t Результат: s=" + s + "    k=" + k + "\n");
