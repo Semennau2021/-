@@ -1,0 +1,25 @@
+double g, pi, x, y, s, a, p, d, чл, зн;
+int n,k;
+m1: Console.WriteLine(" Введiть значення кута в градуса");
+g = double.Parse(Console.ReadLine());
+pi = Math.PI;
+x = g*pi/180;
+Console.WriteLine("\t Iнтервал \n");
+k = 0; s = 0; p = 1; n = 3; d = 1; a = x;
+while (Math.Abs(a) >= 0.000001)
+{
+    s +=a;
+    чл = x*x*x*d;
+    p = -p*(n-1)*1;
+    зн = p;
+    a = чл/зн;
+    d = x*x;
+    n +=2;
+    k++;
+    Console.WriteLine("\t Iтерацiя " + k + '\n' + "   a=" + a + "    s=" + s + "\n");
+}
+y = Math.Sin(x);
+Console.WriteLine("\t Результати" + '\n' + "Значення кута в градусах =" + g + "Сума ряду =" + s + '\n' + "Кiлькiсть членiв ряду =" + k + '\n' + "Функцiя SIN(x) =" + y);
+Console.WriteLine("Для повторного вводу" + '\n' + "Для завершення програми натиснiть *Ентер* ");
+string rep = Console.ReadLine();
+if (rep != "") goto m1;
