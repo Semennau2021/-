@@ -1,0 +1,12 @@
+float a,x;
+double y;
+Console.WriteLine(" Результати розрахункiв");
+for (a = 0.5f; a <= 2; a+=0.5f)
+{
+    Console.WriteLine(" a=" + a);
+    for (x =0; x <=2; x+=0.05f)
+    {
+        y = (a * a * a)/ (a * a + x * x);
+        Console.WriteLine("  x=" + x + '\t' + " y=" + y);
+    }
+}
