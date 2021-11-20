@@ -1,0 +1,18 @@
+double x, y, s, a, p, f, чл, зн, pi = Math.PI;
+int n,k;
+x = pi/6; //pi //pi*4
+Console.WriteLine("\tПромiжнi результати\n");
+k = 0; s = 1; p = 1; n = 1; f = 1; a = x;
+while (Math.Abs(a) >= 0.00001)
+{
+    s +=a;
+    p*=2 * f;
+    чл = Math.Pow(2, 2*n) * Math.Pow(x, 2*n+1);
+    зн = p;
+    a = Math.Pow(-1, n) * чл/зн;
+    f +=1;
+    k++;
+    Console.WriteLine("\t Iтерацiя №" + k + '\n' + "   a=" + a + "    s=" + s + "\n");
+}
+y = x * Math.Cos(2*x);
+Console.WriteLine("\t Результат:" + '\n' + "Сума ряду =" + s +'\n' + "Кiлткiсть членiв ряду =" + k + '\n' + "Функцiя y(x) =" + y);
