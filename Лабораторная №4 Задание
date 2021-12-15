@@ -1,0 +1,95 @@
+public class State
+{
+    public int territory, population;
+    public string country;
+    string place = "Держава"; 
+    public State(int territory, string country, int population)
+    {
+        this.territory = territory;
+        this.population = population;
+        this.country = country;
+        Console.WriteLine("Зявилась нова {0} - {1} з населенням {2}", place, country, population);
+    }
+    public void war()
+    {
+        Console.WriteLine("{0} з {1} проголосила війну, щоб збільшити свою {2} км^2 територію", place, country, territory);
+    }
+    public void list()
+    {
+        Console.WriteLine("Населення в {0} людей проживає на {1} км території", population, territory);
+    }
+}
+public class Republic : State
+{
+    public string date;
+    string man;
+    string place = "Республіка";
+    public Republic(int territory, string country, int population, string date, string man)
+    :base(territory, country, population)
+    {
+        this.date = date;
+        this.man = man;
+        Console.WriteLine("В {0} була створена нова {1}", country, place);
+    }
+    public void election()
+    {
+        Console.WriteLine("скоро {0}, отже замість {1} буде обраний хтось інший", date, man);
+    }
+    
+}
+public class Monarchy : State
+{
+    public string monarch;
+    public int years;
+    string place = "Монархія";
+    public Monarchy(int territory, string country, int population, string monarch, int years)
+    :base(territory, country, population)
+    {
+        this.monarch = monarch;
+        this.years = years;
+        Console.WriteLine(" Будучи вже {0} років у влади {1} править територією в понад {2} кm ", years, monarch, territory);
+    }
+    public void expansion()
+    {
+        Console.WriteLine("{0} вирішив, що {1} повинна бути не тільки в {2}", monarch, place, country);
+    }
+    public void toll()
+    {
+        Console.WriteLine(" З населення в {0} була зібрана дань у розмірі {1} золотих", population, population * 6);
+    }
+}   
+public class Kingdom : Monarchy
+{
+    public string knight;
+    string successor;
+    string place = "Королівство";
+    public Kingdom(int territory, string country, int population, string monarch, int years, string knight, string successor)
+    :base(territory, country, population, monarch, years)
+    {
+        this.knight = knight;
+        this.successor = successor;
+    }
+    public void rebellion()
+    {
+        Console.WriteLine("Правління {0} закінчилосся гибелью {1} та {2} після {3} років правління", monarch, knight, successor, years);
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        State first = new State(89765, "Непал", 42345);
+        first.territory = 39999;
+        first.war();
+        first.list();
+        Republic second = new Republic(645324, "Австрія", 654788, "17.05.1654", "Георній");
+        second.election();
+        Monarchy third = new Monarchy(276245, "Японія", 6547458, "Шао Линь", 43);
+        third.years = 87;
+        third.expansion();
+        third.toll();
+        Kingdom forth = new Kingdom(9786563, "Швеція", 545996700, "Йард", 29, "Шайвид", "Виктор");
+        forth.rebellion();
+        forth.knight = "Геракл"; 
+    }
+}
