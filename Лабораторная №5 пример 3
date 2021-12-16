@@ -1,0 +1,64 @@
+class Shape
+{
+//Малювати геометричну фігуру
+public virtual void draw()
+{
+Console.WriteLine("Shape.draw()");
+}
+//Стирати геометричну фігуру
+public virtual void erase()
+{
+Console.WriteLine("Shape.erase()");
+}
+}
+class Circle : Shape
+{
+public override void draw() {
+Console.WriteLine("Circle.draw()");
+}
+public override void erase()
+{
+Console.WriteLine("Circle.erase()");
+}
+}
+class Square : Shape
+{
+public override void draw()
+{
+Console.WriteLine("Square.draw()");
+}
+public override void erase()
+{
+Console.WriteLine("Square.erase()");
+}
+}
+class Triangle : Shape
+{
+public override void draw()
+{
+Console.WriteLine("Triangle. draw()");
+}
+public override void erase()
+{
+Console.WriteLine("Triangle.erase()");
+}
+}
+public class ShapeManager
+{
+public static void Main()
+{
+// Створення геометричної фігури
+Shape s = new Shape();
+s.draw();// викликається draw() із Shape
+s.erase();// викликається erase() з Shape
+s = new Circle();
+s.draw(); // викликається draw() із Circle
+s.erase(); // викликається erase() з Circle
+s = new Square();
+s.draw(); // викликається draw() із Square
+s.erase(); // викликається erase() з Square
+s = new Triangle();
+s.draw(); // викликається draw() із Triangle
+s.erase(); // викликається erase() з Triangle
+}
+}
