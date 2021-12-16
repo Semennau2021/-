@@ -1,0 +1,90 @@
+public class State
+{
+    public int territory, population;
+    public string country;
+    string place = "Держава"; 
+    public State(int territory, string country, int population)
+    {
+        this.territory = territory;
+        this.population = population;
+        this.country = country;
+    }
+    public void list(bool ask)
+    {
+        if(ask)
+            Console.WriteLine("Населення в {0} людей проживає на {1} км територiї", population, territory);
+        else
+            Console.WriteLine("У записах нiчого нового");
+    }
+}
+public class Republic : State
+{
+    public string date;
+    string man;
+    public State Info;
+    string place = "Республiка";
+    public Republic(int territory, string country, int population, string date, string man)
+    :base(territory, country, population)
+    {
+        this.date = date;
+        this.man = man;;
+        Info = new State(territory, country, population);
+    }
+    public void election(bool ask)
+    {
+        Console.WriteLine("скоро {0}, отже замiсть {1} буде обраний хтось iнший", date, man);
+        Info.list(ask);
+    }
+}
+public class Monarchy : State
+{
+    public string monarch;
+    public int years;
+    public State holder;
+    string place = "Монархiя";
+    public Monarchy(int territory, string country, int population, string monarch, int years)
+    :base(territory, country, population)
+    {
+        this.monarch = monarch;
+        this.years = years;
+        holder = new State(territory, country, population);
+    }
+    public void toll(bool ask)
+    {
+        holder.list(ask);
+        Console.WriteLine(" З населення в {0} була зiбрана дань у розмiрi {1} золотих", population, population * 6);
+    }
+}   
+public class Kingdom : Monarchy
+{
+    public string knight;
+    string successor;
+    public Monarchy news;
+    string place = "Королiвство";
+    public Kingdom(int territory, string country, int population, string monarch, int years, string knight, string successor)
+    :base(territory, country, population, monarch, years)
+    {
+        this.knight = knight;
+        this.successor = successor;
+        news = new Monarchy(territory, country, population, monarch, years);
+    }
+    public void rebellion(bool ask)
+    {
+        Console.WriteLine("Правлiння {0} закiнчилосся гибелью {1} та {2} пiсля {3} рокiв правлiння", monarch, knight, successor, years);
+        news.list(ask);
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        State first = new State(89765, "Непал", 42345);
+        first.list(false);
+        Republic second = new Republic(645324, "Австрiя", 654788, "17.05.1654", "Георнiй");
+        second.election(true);
+        Monarchy third = new Monarchy(276245, "Япоiя", 6547458, "Шао Линь", 43);
+        third.toll(false);
+        Kingdom forth = new Kingdom(9786563, "Швецiiя", 545996700, "Йард", 29, "Шайвид", "Виктор");
+        forth.rebellion(true);
+    }
+}
