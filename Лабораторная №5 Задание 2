@@ -1,0 +1,72 @@
+abstract public class State
+{
+    abstract public void Info(); //Загально описуе тип держави
+    abstract public void Exist(); // Які подібні зараз існують 
+    abstract public void Next(); // Хто наступним отримує владу
+}
+
+public class Republic : State
+{
+    override public void Info()
+    {
+        Console.WriteLine("У Республiцi верховна влада належить народу");
+    }
+    override public void Exist()
+    {
+        Console.WriteLine("Зараз iснуює багато рiзнiх республiк, наприклад Бiлорусь");
+    }
+    override public void Next()
+    {
+        Console.WriteLine("В республiках обираються наступнi органи влади");
+    }
+}
+public class Monarchy : State
+{
+    public override void Info()
+    {
+        Console.WriteLine("При монархiї влада повнiстю належить однiй особi");    
+    }
+    override public void Exist()
+    {
+        Console.WriteLine("Найвiдомiшою icнуючою монархiєю сьогоднi є королiвство Велика Британiя");
+    }
+    override public void Next()
+    {
+        Console.WriteLine("Влада передається спадкоемцю монарха");
+    }
+}
+public class Kingdom : State
+{
+        override public void Info()
+    {
+        Console.WriteLine("Королiвство - держава у влади якої стоїть король");    
+    }
+    override public void Exist()
+    {
+        Console.WriteLine("Сьогоднi iснує 12 королiвств, такия як Нiдерланди або Швецiя");
+    }
+    override public void Next()
+    {
+        Console.WriteLine("Оскiльки Королiвство = Монархiя, влада передаеться спадкоємцю");
+    }
+}
+
+class Testruct 
+{
+    static void Main()
+    {
+        State s;
+        s = new Republic();
+        s.Info();
+        s.Exist();
+        s.Next();
+        s = new Monarchy();
+        s.Info();
+        s.Exist();
+        s.Next();
+        s = new Kingdom();
+        s.Info();
+        s.Exist();
+        s.Next();
+    }
+}
